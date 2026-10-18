@@ -1,34 +1,67 @@
 import { searchMovies } from './shared/api.js';
 
+// Les éléments de la page
 const searchInput = document.getElementById('search-input');
 const searchMessage = document.getElementById('search-message');
 const searchResults = document.getElementById('search-results');
-function displayMovies(movies) {
-  movies.forEach((movie) => {
-    searchResults.innerHTML += `
-      <article class="film-card">
-        <img class="film-poster" src="${movie.Poster}" alt="Affiche de ${movie.Title}">
-        <h3 class="film-title">${movie.Title}</h3>
-        <a class="film-link" href="/movie.html?id=${movie.imdbID}">En savoir plus</a>
-      </article>`;
-  });
+const loader = document.getElementById('loader');
+const loadMoreButton = document.getElementById('load-more-results');
+
+let movieName = '';     // le titre recherché
+let page = 1;           // prochaine page OMDb à charger
+let isLoading = false;  // évite deux chargements en même temps (TP08)
+
+// Charge une page de résultats et l'ajoute à la suite (comme loadImages du TP08)
+async function loadResults() {
+  isLoading = true;
+  loader.hidden = false;
+
+  try {
+    const data = await searchMovies(movieName, page);
+
+    data.Search.forEach((movie) => {
+      searchResults.innerHTML += `
+        <article class="film-card">
+          <img class="film-poster" src="${movie.Poster}" alt="Affiche de ${movie.Title}">
+          <h3 class="film-title">${movie.Title}</h3>
+          <a class="film-link" href="/movie.html?id=${movie.imdbID}">En savoir plus</a>
+        </article>`;
+    });
+
+    page++;
+    loadMoreButton.hidden = false;
+  } catch (error) {
+    searchMessage.textContent = error.message;
+    loadMoreButton.hidden = true;
+  }
+
+  loader.hidden = true;
+  isLoading = false;
 }
 
-//ecouter la frappe
-searchInput.addEventListener('input', async () => {
-  const movieName = searchInput.value.trim();
+// Temps réel : à chaque lettre tapée, on repart de zéro
+searchInput.addEventListener('input', () => {
+  movieName = searchInput.value.trim();
   searchResults.innerHTML = '';
   searchMessage.textContent = '';
+  loadMoreButton.hidden = true;
+  page = 1;
 
   if (movieName.length < 3) {
     searchMessage.textContent = 'Tapez au moins 3 lettres.';
     return;
   }
+  loadResults();
+});
 
-  try {
-    const data = await searchMovies(movieName);
-    displayMovies(data.Search);
-  } catch (error) {
-    searchMessage.textContent = error.message;
+// Bouton « Charger plus de résultats »
+loadMoreButton.addEventListener('click', loadResults);
+
+// Défilement infini (checkBottom du TP08)
+window.addEventListener('scroll', () => {
+  const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 300;
+
+  if (nearBottom && !isLoading && !loadMoreButton.hidden) {
+    loadResults();
   }
 });
