@@ -18,3 +18,8 @@ export function searchMovies(movieName, page = 1) {
 export function getMovie(id) {
   return request({ i: id, plot: 'full' });
 }
+
+//searchMovies avec y: year en plus.
+export function searchMoviesByYear(movieName, year, page = 1) {
+  return request({s: movieName, type: 'movie', y: year, page });
+}
