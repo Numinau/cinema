@@ -1,4 +1,4 @@
-/* Aloïs, ma recherche de moovi ne m'envoit pas de bouton, la solution: rajuter un bouton flottant */
+/* Aloïs, ma recherche de movies ne m'envoit pas de bouton, la solution: rajuter un bouton flottant */
 #load-more-results {
   position: fixed;
   bottom: 20px;
