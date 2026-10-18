@@ -9,10 +9,26 @@
     
 </head>
 <body>
+    <header>
+        <nav>
+            <a href="/index.html">Accueil</a>
+            <a href="/search.html">Recherche</a>
+        </nav>
+    </header>
 
+    <main>
+        <h1>Rechercher un film</h1>
 
+        <input type="search" id="search-input" placeholder="Titre du film en anglais…">
 
+        <p id="search-message"></p>
 
+        <div id="search-results"></div>
+
+        <p id="loader" hidden>Chargement en cours…</p>
+
+        <button id="load-more-results" hidden>Charger plus de résultats</button>
+    </main>
     <script type="module" src="/src/search.js"></script>
 </body>
 </html>

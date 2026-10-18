@@ -11,8 +11,8 @@ async function request(params) {
   return data;
 }
 
-export function searchMovies(query, page = 1) {
-  return request({ s: query, type: 'movie', page });
+export function searchMovies(movieName, page = 1) {
+  return request({ s: movieName, type: 'movie', page });
 }
 
 export function getMovie(id) {
