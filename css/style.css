@@ -1,70 +1,61 @@
-/* Aloïs, ma recherche de movies ne m'envoit pas de bouton, la solution: rajouter un bouton flottant */
-#load-more-results {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-}
 
 /*Toutes les variables vont dans le root */
 
 :root{
   --main_color: black;
-  --second_color: white;
 }
 
-/*Les fonds d'écrans des différentes pages*
+/*Les fonds d'écrans des différentes pages*/
 
-.background_index{
-  background-image: url(/image/fond_cinéma.jpg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  min-height: 100vh;
-}
-
-.background_search{
-  background-image: url(/image/fond_cinéma.jpg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  min-height: 100vh;
-}
-
-.background_movie{
-  background-image: url(/image/fond_cinéma.jpg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  min-height: 100vh;
+.background{
+  background-color: #ade8f4;
 }
 
 /* La mise en forme du header */
 
+header{
+  background-color:#48cae4 ;
+}
+
+nav{
+  display: flex;
+  gap: 30px;
+  padding: 10px;
+}
+
+nav a{
+  font-size: 1.3rem;
+}
+
 .lien{
-  text-decoration: none;
   color: var(--main_color);
 }
 
 .lien:hover{
   text-decoration: underline;
+  font-weight: 800;
 }
 
 /* Le texte : police et couleur */
 
-.main_police{
-  /* font-family: " ", ; sans-serif */
-  font-weight: 800;
-  font-style: normal;
-  color: var(--main_color) ;
+h2{
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
 }
 
 /* Page index */
 
-#trending-films,
-#films-2024 {
+header h1 {
+  text-align: center;
+  font-size: 5rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 40px 0;
+  padding-bottom: 40px;
+}
+
+#trending-films, #films-2024, #search-results {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
@@ -87,4 +78,58 @@
 
 .film-plot {
   overflow-wrap: break-word;
+}
+
+/* Page recherche */
+
+#search-input {
+  display: block;
+  width: 40%;
+  margin: 30px auto;
+  font-size: 1.3rem;
+}
+
+#load-more-results {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+
+/* Page movie */
+
+#movie-details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px;
+  align-items: start;
+}
+
+.movie-poster {
+  display: block;
+  max-width: 100%;
+  max-height: 80vh;
+  margin: 20px auto;
+}
+
+.movie-info {
+  margin: 20px;
+  overflow-wrap: break-word;
+}
+
+/* ================================================ */
+
+.film-link {
+  display: block;
+  text-align: center;
+}
+
+.film-title,
+.movie-title {
+  text-decoration: underline;
+}
+
+#load-more-2024 {
+  display: block;
+  margin: 30px 0 30px auto;
 }

@@ -16,9 +16,9 @@ function showMovie(movie) {
     ${poster}
     <div class="movie-info">
       <h1 class="movie-title">${movie.Title} (${movie.Year})</h1>
-      <p class="movie-meta">${movie.Runtime} · ${movie.Genre} · ${movie.Released}</p>
-      <p class="movie-rating">Note IMDb : ${movie.imdbRating}/10 (${movie.imdbVotes} votes)</p>
-      <p class="movie-plot">${movie.Plot}</p>
+      <p>${movie.Runtime} · ${movie.Genre} · ${movie.Released}</p>
+      <p>Note IMDb : ${movie.imdbRating}/10 (${movie.imdbVotes} votes)</p>
+      <p>${movie.Plot}</p>
       <p><strong>Réalisateur :</strong> ${movie.Director}</p>
       <p><strong>Acteurs :</strong> ${movie.Actors}</p>
       <p><strong>Pays :</strong> ${movie.Country}</p>
