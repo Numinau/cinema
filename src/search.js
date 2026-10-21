@@ -24,12 +24,11 @@ async function loadResults() {
         <article class="film-card">
           <img class="film-poster" src="${movie.Poster}" alt="Affiche de ${movie.Title}">
           <h3 class="film-title">${movie.Title}</h3>
-          <a class="film-link" href="/movie.html?id=${movie.imdbID}">En savoir plus</a>
+          <a class="film-link lien" href="/movie.html?id=${movie.imdbID}">En savoir plus</a>
         </article>`;
     });
 
     page++;
-    loadMoreButton.hidden = false;
   } catch (error) {
     searchMessage.textContent = error.message;
     loadMoreButton.hidden = true;
@@ -44,11 +43,12 @@ searchInput.addEventListener('input', () => {
   movieName = searchInput.value.trim();
   searchResults.innerHTML = '';
   searchMessage.textContent = '';
-  loadMoreButton.hidden = true;
+  loadMoreButton.hidden = false;
   page = 1;
 
   if (movieName.length < 3) {
     searchMessage.textContent = 'Tapez au moins 3 lettres.';
+    loadMoreButton.hidden = true;
     return;
   }
   loadResults();
@@ -57,11 +57,3 @@ searchInput.addEventListener('input', () => {
 // Bouton « Charger plus de résultats »
 loadMoreButton.addEventListener('click', loadResults);
 
-// Défilement infini (checkBottom du TP08)
-window.addEventListener('scroll', () => {
-  const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 300;
-
-  if (nearBottom && !isLoading && !loadMoreButton.hidden) {
-    loadResults();
-  }
-});

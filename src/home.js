@@ -16,7 +16,7 @@ trendingMovies.forEach((movie) => {
       <img class="film-poster" src="${movie.Poster}" alt="Affiche de ${movie.Title}">
       <h3 class="film-title">${movie.Title}</h3>
       <p class="film-plot">${movie.Plot.slice(0, 100)}...</p>
-      <a class="film-link" href="/movie.html?id=${movie.imdbID}">En savoir plus</a>
+      <a class="film-link lien" href="/movie.html?id=${movie.imdbID}">En savoir plus</a>
     </article>`;
 });
 
@@ -32,12 +32,12 @@ async function load2024() {
         <article class="film-card">
           <img class="film-poster" src="${movie.Poster}" alt="Affiche de ${movie.Title}">
           <h3 class="film-title">${movie.Title}</h3>
-          <a class="film-link" href="/movie.html?id=${movie.imdbID}">En savoir plus</a>
+          <a class="film-link lien" href="/movie.html?id=${movie.imdbID}">En savoir plus</a>
         </article>`;
     });
 
     page++;
-  } catch (error) {
+  } catch {
     loadMoreButton.hidden = true;
   }
 }
