@@ -1,6 +1,90 @@
-/* Aloïs, ma recherche de movies ne m'envoit pas de bouton, la solution: rajuter un bouton flottant */
+/* Aloïs, ma recherche de movies ne m'envoit pas de bouton, la solution: rajouter un bouton flottant */
 #load-more-results {
   position: fixed;
   bottom: 20px;
   right: 20px;
+}
+
+/*Toutes les variables vont dans le root */
+
+:root{
+  --main_color: black;
+  --second_color: white;
+}
+
+/*Les fonds d'écrans des différentes pages*
+
+.background_index{
+  background-image: url(/image/fond_cinéma.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.background_search{
+  background-image: url(/image/fond_cinéma.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.background_movie{
+  background-image: url(/image/fond_cinéma.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* La mise en forme du header */
+
+.lien{
+  text-decoration: none;
+  color: var(--main_color);
+}
+
+.lien:hover{
+  text-decoration: underline;
+}
+
+/* Le texte : police et couleur */
+
+.main_police{
+  /* font-family: " ", ; sans-serif */
+  font-weight: 800;
+  font-style: normal;
+  color: var(--main_color) ;
+}
+
+/* Page index */
+
+#trending-films,
+#films-2024 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.film-card {
+  min-width: 0;
+}
+
+.film-poster {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+}
+
+.film-title {
+  text-align: center;
+}
+
+.film-plot {
+  overflow-wrap: break-word;
 }
