@@ -9,11 +9,9 @@ const loadMoreButton = document.getElementById('load-more-results');
 
 let movieName = '';     // le titre recherché
 let page = 1;           // prochaine page OMDb à charger
-let isLoading = false;  // évite deux chargements en même temps (TP08)
 
-// Charge une page de résultats et l'ajoute à la suite (comme loadImages du TP08)
+// Charge une page de résultats
 async function loadResults() {
-  isLoading = true;
   loader.hidden = false;
 
   try {
@@ -35,7 +33,6 @@ async function loadResults() {
   }
 
   loader.hidden = true;
-  isLoading = false;
 }
 
 // Temps réel : à chaque lettre tapée, on repart de zéro
