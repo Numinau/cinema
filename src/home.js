@@ -25,7 +25,7 @@ let page = 1;
 
 async function load2024() {
   try {
-    const data = await searchMoviesByYear('love', 2024, page);
+    const data = await searchMoviesByYear('happy', 2024, page);
 
     data.Search.forEach((movie) => {
       films2024.innerHTML += `
