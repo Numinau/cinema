@@ -16,8 +16,9 @@ function showMovie(movie) {
     ${poster}
     <div class="movie-info">
       <h1 class="movie-title">${movie.Title} (${movie.Year})</h1>
-      <p>${movie.Runtime} · ${movie.Genre} · ${movie.Released}</p>
-      <p>Note IMDb : ${movie.imdbRating}/10 (${movie.imdbVotes} votes)</p>
+      <p>${movie.Runtime} · ${movie.Genre}</p>
+      <p><strong>Date de sortie :</strong> ${new Date(movie.Released).toLocaleDateString('fr-FR')}</p>
+      <p><strong>Notes :</strong> ${movie.Ratings.map((rating) => `${rating.Source} : ${rating.Value}`).join(' · ')}</p>
       <p>${movie.Plot}</p>
       <p><strong>Réalisateur :</strong> ${movie.Director}</p>
       <p><strong>Acteurs :</strong> ${movie.Actors}</p>
